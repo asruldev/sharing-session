@@ -112,15 +112,53 @@ console.log(add5AndMultiplyBy2(10)); // Output: 30
 ### LIVE CODE
 Mari kita cobakan dengan menuliskannya pada [Replit](https://replit.com/@asruldev/frontend-sicepat#index.js)
 
+#### 1. Curry
+```js
+function curry(fn) {
+  return function curried(...args) {
+    if (args.length >= fn.length) {
+      return fn(...args);
+    } else {
+      return function(...nextArgs) {
+        return curried(...args, ...nextArgs);
+      }
+    }
+  };
+}
+```
 
+#### 2. Compose
+```js
+function compose(...fns) {
+  return function(result) {
+    return fns.reduceRight((acc, fn) => fn(acc), result);
+  };
+}
+```
 
+#### 3. Pemprosesan data dengan curry
 
+```js
+const trim = str => str.trim();
+const toUpperCase = str => str.toUpperCase();
+const addPrefix = curry((prefix, str) => `${prefix} ${str}`);
+const addSuffix = curry((suffix, str) => `${str} ${suffix}`);
+```
 
+#### 4. Lakukan Compose
+```js
+const processInput = compose(
+  addSuffix('yang paling baik hati!'),
+  addPrefix('Halo,'),
+  toUpperCase,
+  trim
+);
+```
 
-
-
-
-
-
-
+#### 5. Contoh pemakaiannya
+```js
+const rawInput = "   asRul    ";
+const processedInput = processInput(rawInput);
+console.log(processedInput);
+```
 
