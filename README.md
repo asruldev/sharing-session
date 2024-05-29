@@ -40,7 +40,7 @@ console.log(curriedAdd(2)(3)(5)) // Output: 15
 ## Function Composition
 **Composition** adalah teknik penggabungan beberapa fungsi menjadi satu fungsi yang menjalankan fungsi-fungsi tersebut secara berurutan dari kanan ke kiri.
 
-### Contoh
+### Penggunaannya
 
 Misalnya kita memiliki beberapa fungsi sederhana:
 
